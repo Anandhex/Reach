@@ -36,6 +36,7 @@ export class MeSection extends Component {
     if (!userId) {
       userId = this.props.match && this.props.match.params.id;
     }
+    console.log(userId, this.props.user, this.props.match.params.id);
     if (userId) {
       try {
         let api = API_BASE_URL + `users/${userId._id}`;
