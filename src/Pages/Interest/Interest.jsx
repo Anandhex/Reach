@@ -54,7 +54,7 @@ export class Interest extends Component {
   };
 
   nextPage = () => {
-    if (this.state.selected.filter((interest) => interest).length) {
+    if (this.state.selected.filter((interest) => interest).length >= 3) {
       this.props.history.push({
         pathname: "/profileUpdate",
         state: {

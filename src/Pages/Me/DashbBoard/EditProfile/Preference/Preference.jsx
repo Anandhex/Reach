@@ -37,7 +37,7 @@ export class Preference extends Component {
     const { selected } = this.state;
     if (
       this.state.selected &&
-      this.state.selected.filter((select) => select).length > 3
+      this.state.selected.filter((select) => select).length >= 3
     ) {
       this.setState({ isLoading: true });
       let api = API_BASE_URL + `users/${jwt.getId()}`;
