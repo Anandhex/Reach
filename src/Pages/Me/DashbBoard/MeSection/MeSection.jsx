@@ -15,6 +15,9 @@ export class MeSection extends Component {
       user: null,
       posts: [],
       isLoading: false,
+      totalPost: 0,
+      totalLikes: 0,
+      totalComments: 0,
     };
   }
   startCount = () => {
@@ -191,15 +194,17 @@ export class MeSection extends Component {
             <div className="Profile-username-dashboard-stats-container">
               <div className="dashboard-stats">
                 <div className="dashboard-title">Likes</div>
-                <div className="dashboard-count">100</div>
+                <div className="dashboard-count">{this.state.totalLikes}</div>
               </div>
               <div className="dashboard-stats">
                 <div className="dashboard-title">Comments</div>
-                <div className="dashboard-count">80</div>
+                <div className="dashboard-count">
+                  {this.state.totalComments}
+                </div>
               </div>
               <div className="dashboard-stats">
                 <div className="dashboard-title">Posts</div>
-                <div className="dashboard-count">70</div>
+                <div className="dashboard-count">{this.state.totalPost}</div>
               </div>
               {/* <div className="dashboard-stats">
               <div className="dashboard-title">Saved</div>
