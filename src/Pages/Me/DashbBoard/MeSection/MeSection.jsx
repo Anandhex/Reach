@@ -17,7 +17,7 @@ export class MeSection extends Component {
       isLoading: false,
     };
   }
-  async componentDidMount() {
+  startCount = () => {
     $(".dashboard-count").each(function () {
       var $this = $(this);
       $({ Counter: 0 }).animate(
@@ -31,6 +31,8 @@ export class MeSection extends Component {
         }
       );
     });
+  };
+  async componentDidMount() {
     this.setState({ isLoading: true });
     let userId = this.props.user;
     if (!userId) {
@@ -38,8 +40,20 @@ export class MeSection extends Component {
     }
     if (userId) {
       try {
-        let api = API_BASE_URL + `users/${userId._id ? userId._id : userId}`;
+        let api =
+          API_BASE_URL +
+          `users/getUserStats/${userId._id ? userId._id : userId}`;
         let resp = await axios.get(api);
+        const {
+          totalPost,
+          totalComments,
+          totalLikes,
+        } = resp.data.data.userStats[0];
+        this.setState({ totalPost, totalLikes, totalComments }, () => {
+          this.startCount();
+        });
+        api = API_BASE_URL + `users/${userId._id ? userId._id : userId}`;
+        resp = await axios.get(api);
         this.setState({ user: resp.data.data.user });
         api += "/posts?sort=-likes";
         resp = await axios.get(api);
