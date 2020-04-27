@@ -86,7 +86,7 @@ export class Friends extends Component {
           {this.state.friends.length ? (
             <div className="friends-container">{this.renderFriends()}</div>
           ) : (
-            <div className="empty-friends">You aren't Following Added </div>
+            <div className="empty-friends">You aren't Following anyone </div>
           )}
         </div>
       </>
