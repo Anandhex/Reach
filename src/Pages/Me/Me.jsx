@@ -86,7 +86,7 @@ export class Me extends Component {
               <div className="Me-side-bar-section-title"> Connected</div>
               <div className="Me-side-bar-sub-section">
                 <div id="Friends" onClick={(e) => this.setSelectedSection(e)}>
-                  Friends
+                  Followers
                 </div>
                 <div id="Posts" onClick={(e) => this.setSelectedSection(e)}>
                   Posts

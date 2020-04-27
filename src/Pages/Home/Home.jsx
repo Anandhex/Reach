@@ -153,7 +153,7 @@ class Welcome extends Component {
               className="btn-add"
               onClick={(e) => this.addFriend(e, friend._id)}
             >
-              Add Friend
+              Follow
             </button>
             <button
               className="btn-cancel"

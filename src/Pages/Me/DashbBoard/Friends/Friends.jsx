@@ -72,7 +72,7 @@ export class Friends extends Component {
         <div className="friend-username">{friend && friend.username}</div>
         <div className="friend-footer">
           <button onClick={(e) => this.removeFriend(e, friend._id)}>
-            remove
+            Unfollow
           </button>
         </div>
       </div>
@@ -86,7 +86,7 @@ export class Friends extends Component {
           {this.state.friends.length ? (
             <div className="friends-container">{this.renderFriends()}</div>
           ) : (
-            <div className="empty-friends">No Friends Added </div>
+            <div className="empty-friends">No Followers Added </div>
           )}
         </div>
       </>
