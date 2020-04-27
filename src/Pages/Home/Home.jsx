@@ -183,12 +183,16 @@ class Welcome extends Component {
         const userId = jwt.getId();
         const api = API_BASE_URL + `users/${userId}/posts`;
         const headers = jwt.getAuthHeader();
-        await axios.post(
+        const resp = await axios.post(
           api,
           { username, postContent, postTitle, category },
           { headers }
         );
         toast.info("Post created");
+        const message = resp.data.data.data.message;
+        if (message) {
+          toast.error(message);
+        }
         this.setState({ postContent: "", postTitle: "" });
       } catch (err) {
         console.log(err);
