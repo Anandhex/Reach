@@ -189,7 +189,7 @@ class Welcome extends Component {
           { headers }
         );
         toast.info("Post created");
-        const message = resp.data.data.data.message;
+        const message = resp.data.data.message;
         if (message) {
           toast.error(message);
         }

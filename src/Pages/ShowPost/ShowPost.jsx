@@ -70,8 +70,7 @@ export class ShowPost extends Component {
           commentText: "",
         });
         toast.info("Comment added!");
-        console.log(resp.data.data);
-        const message = resp.data.data.data.message;
+        const message = resp.data.data.message;
         if (message) {
           toast.error(message);
         }
@@ -106,7 +105,7 @@ export class ShowPost extends Component {
           isEdit: false,
         });
         toast.info("Comment edited!");
-        const message = resp.data.data.data.message;
+        const message = resp.data.data.message;
         if (message) {
           toast.error(message);
         }
@@ -299,7 +298,7 @@ export class ShowPost extends Component {
         editPostContent: null,
       });
       toast.info("Updated the post!");
-      const message = resp.data.data.data.message;
+      const message = resp.data.data.message;
       if (message) {
         toast.error(message);
       }
