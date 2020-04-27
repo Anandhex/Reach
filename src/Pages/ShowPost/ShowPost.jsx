@@ -70,6 +70,7 @@ export class ShowPost extends Component {
           commentText: "",
         });
         toast.info("Comment added!");
+        console.log(resp.data.data);
         const message = resp.data.data.data.message;
         if (message) {
           toast.error(message);
