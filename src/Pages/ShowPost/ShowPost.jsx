@@ -65,14 +65,15 @@ export class ShowPost extends Component {
       };
       try {
         const resp = await axios.post(api, body, { headers });
-        this.setState({
-          post: resp.data.data.data,
-          commentText: "",
-        });
-        toast.info("Comment added!");
         const message = resp.data.data.message;
         if (message) {
           toast.error(message);
+        } else {
+          this.setState({
+            post: resp.data.data.data,
+            commentText: "",
+          });
+          toast.info("Comment added!");
         }
       } catch (err) {
         console.log(err);
@@ -98,16 +99,17 @@ export class ShowPost extends Component {
       };
       try {
         const resp = await axios.patch(api, body, { headers });
-        this.setState({
-          post: resp.data.data.data,
-          editText: "",
-          editcommentId: null,
-          isEdit: false,
-        });
-        toast.info("Comment edited!");
         const message = resp.data.data.message;
-        if (message) {
+        if (message === "Please refrain from typing such post/comments") {
           toast.error(message);
+        } else {
+          this.setState({
+            post: resp.data.data.data,
+            editText: "",
+            editcommentId: null,
+            isEdit: false,
+          });
+          toast.info("Comment edited!");
         }
       } catch (err) {
         if (!err.response) {
@@ -291,16 +293,16 @@ export class ShowPost extends Component {
     try {
       const resp = await axios.patch(api, body, { headers });
       this.props.history.goBack();
-
-      this.setState({
-        post: resp.data.data.data,
-        editPost: false,
-        editPostContent: null,
-      });
-      toast.info("Updated the post!");
       const message = resp.data.data.message;
       if (message) {
         toast.error(message);
+      } else {
+        this.setState({
+          post: resp.data.data.data,
+          editPost: false,
+          editPostContent: null,
+        });
+        toast.info("Updated the post!");
       }
     } catch (err) {
       console.log(err);

@@ -58,7 +58,7 @@ class Welcome extends Component {
   }
 
   async componentDidUpdate(prevProps, prevState) {
-    if (prevProps.isRecommended != this.props.isRecommended) {
+    if (prevProps.isRecommended !== this.props.isRecommended) {
       console.log("here");
       let resp;
       try {
@@ -188,12 +188,12 @@ class Welcome extends Component {
           { username, postContent, postTitle, category },
           { headers }
         );
-        if (!resp.data.data) {
+        const message = resp.data.data.message;
+        if (message === "Please refrain from typing such post/comments") {
           toast.error(message);
         } else {
           toast.info("Post created");
         }
-        const message = resp.data.data.message;
 
         this.setState({ postContent: "", postTitle: "" });
       } catch (err) {
