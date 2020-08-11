@@ -188,11 +188,13 @@ class Welcome extends Component {
           { username, postContent, postTitle, category },
           { headers }
         );
-        toast.info("Post created");
-        const message = resp.data.data.message;
-        if (message) {
+        if (!resp.data.data) {
           toast.error(message);
+        } else {
+          toast.info("Post created");
         }
+        const message = resp.data.data.message;
+
         this.setState({ postContent: "", postTitle: "" });
       } catch (err) {
         console.log(err);
